@@ -21,11 +21,10 @@ const useStyles = makeStyles(theme => ({
 export default function ChipsArray() {
   const classes = useStyles();
   const [chipData, setChipData] = React.useState([
-    { key: 0, label: 'Angular' },
-    { key: 1, label: 'jQuery' },
-    { key: 2, label: 'Polymer' },
-    { key: 3, label: 'React' },
-    { key: 4, label: 'Vue.js' },
+    { key: 0, label: 'Opel' },
+    { key: 1, label: 'BMW' },
+    { key: 2, label: 'Mercedes' },
+    { key: 3, label: 'Tesla' },
   ]);
 
   const handleDelete = chipToDelete => () => {
@@ -41,23 +40,25 @@ export default function ChipsArray() {
       <TextField 
         fullWidth
         id="standard-basic"
-        label="Standard"
+        label="Поиск по марке авто"
         onKeyPress={(ev) => {
           if (ev.key === 'Enter') {
             ev.preventDefault();
             console.log('ENTER PRESSED')
 
+            if (ev.target.value) {
+              setChipData((chipData) => {
+                const newState = [...chipData]
+                const newChip = {
+                  key: chipData.length,
+                  label: ev.target.value,
+                }
+                ev.target.value = ''
+                newState.push(newChip)
+                return newState;
+              })
+            }
             
-            setChipData((chipData) => {
-              const newState = [...chipData]
-              const newChip = {
-                key: chipData.length,
-                label: ev.target.value,
-              }
-              ev.target.value = ''
-              newState.push(newChip)
-              return newState;
-            })
 
             ev.persist()
           }
