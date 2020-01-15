@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sidebar.css';
+import './Sidebar.scss';
 import PeopleSlider from './components/PeopleSlider'
 import PriceSlider from './components/PriceSlider'
 import IncludedServices from './components/IncludedServices'
