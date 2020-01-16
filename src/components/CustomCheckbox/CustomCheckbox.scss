@@ -1,10 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+body {
+  font-family: 'Rubik', sans-serif;
+}
+.checkboxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 300px;
+  width: 100%;
+}
 .container {
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+    max-width: 78px;
+    width: 100%;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 14px;
+    line-height: 143%;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -22,12 +38,20 @@
 
   
   /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
-    g {
+  .checkmark {
+    
       path {
         transition: fill .3s ease-in-out;
-        fill: red;
+        fill: #D1DDE5;
       }
+    
+   
+  }
+  .container input:checked ~ .checkmark {
+    
+      path {
+        transition: fill .3s ease-in-out;
+        fill: #1A94E5;
     }
    
   }

@@ -13,15 +13,15 @@ const price = {
 
 function App() {
   return (
-    <div className="sidebar">
 
-    <PeopleSlider/>
-    <PriceSlider 
-    price = {price}
-    />
-    <IncludedServices/>
-    <AutoTags/>
-    <CarcassChoice/>
+    <div className="sidebar">
+      <PeopleSlider/>
+      <PriceSlider 
+      price = {price}
+      />
+      <IncludedServices/>
+      <AutoTags/>
+      <CarcassChoice/>
     </div>
   );
 }
