@@ -1,21 +1,28 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+import customTheme from '../../src/theme'
 
 
 
 const useStyles = makeStyles({
     root: {
-        width: 300,
+        maxWidth: 325,
+        width: '100%',
     },
 
     title: {
-      marginTop: 20,
-      marginBottom: 20,
+        fontWeight: 'bold',
+        fontSize: 18,
+        lineHeight: '128%',
+        marginLeft: -7,
+        marginBottom: 10,
+        color: '#353535',
+        marginTop: 30,
     },
 
     divider: {
@@ -24,7 +31,15 @@ const useStyles = makeStyles({
     }
 });
 
-
+const CustomCheckbox = withStyles({
+    root: {
+      color: '#D1DDE5',
+      '&$checked': {
+        color: '#1A94E5',
+      },
+    },
+    checked: {},
+  })(props => <Checkbox color="default" {...props} />);
 
 export default function IncludedServices() {
   
@@ -44,6 +59,8 @@ export default function IncludedServices() {
 
 
     return (
+        <ThemeProvider theme = {customTheme}>
+
         <div className={classes.root}>
             <Typography className={classes.title}  id="included-services" gutterBottom>
                 Включенные услуги
@@ -54,7 +71,7 @@ export default function IncludedServices() {
            >
             <FormControlLabel
                 control={
-                    <Checkbox
+                    <CustomCheckbox
                         checked={state.unlimKm}
                         onChange={handleChange('unlimKm')}
                         value="unlimKm"
@@ -66,7 +83,7 @@ export default function IncludedServices() {
 
             <FormControlLabel
                 control={
-                    <Checkbox
+                    <CustomCheckbox
                         checked={state.addDriver}
                         onChange={handleChange('addDriver')}
                         value="addDriver"
@@ -78,7 +95,7 @@ export default function IncludedServices() {
 
             <FormControlLabel
                 control={
-                    <Checkbox
+                    <CustomCheckbox
                         checked={state.casco}
                         onChange={handleChange('casco')}
                         value="casco"
@@ -90,7 +107,7 @@ export default function IncludedServices() {
 
           <FormControlLabel
                 control={
-                    <Checkbox
+                    <CustomCheckbox
                         checked={state.delivery}
                         onChange={handleChange('delivery')}
                         value="delivery"
@@ -102,7 +119,7 @@ export default function IncludedServices() {
 
             <FormControlLabel
                 control={
-                    <Checkbox
+                    <CustomCheckbox
                         checked={state.option}
                         onChange={handleChange('option')}
                         value="option"
@@ -117,5 +134,7 @@ export default function IncludedServices() {
             <Divider className={classes.divider} />
 
         </div>
+        
+        </ThemeProvider>
     );
 }

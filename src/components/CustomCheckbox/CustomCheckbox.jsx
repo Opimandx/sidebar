@@ -1,11 +1,33 @@
 import React from 'react'
-import './CustomCheckbox.scss'
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Divider from '@material-ui/core/Divider';
+import './CustomCheckbox.scss'
 
+const CustomCheckboxPremium = withStyles({
+ 
+    root: {
+      color: '#D1DDE5',
+      '&$checked': {
+        color: '#1A94E5',
+      },
+    },
+    checked: {},
+  })(props => <Checkbox color="default" {...props} />);
+
+  const useStyles = makeStyles(theme => ({
+    checkbox: {
+      marginTop: 30,
+    },
+    divider: {
+        marginTop: 32,
+        backgroundColor: '#D1DDE5',
+      }
+  }));
 
 export default function CustomCheckbox() {
-
+    const classes = useStyles();
     const [state, setState] = React.useState({
         minivan: false,
         mini: false,
@@ -96,8 +118,9 @@ export default function CustomCheckbox() {
         </div>
 
           <FormControlLabel
+          className={classes.checkbox}
           control={
-              <Checkbox
+              <CustomCheckboxPremium
                   checked={isPremium}
                   onChange={() => setPremium(!isPremium)}
                   value="unlimKm"
@@ -105,6 +128,9 @@ export default function CustomCheckbox() {
               />
           }
           label="Только премиум марки"
+      />
+      <Divider
+         className={classes.divider}
       />
       </>
     )

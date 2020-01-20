@@ -6,11 +6,20 @@ import Slider from '@material-ui/core/Slider';
 
 const useStyles = makeStyles(theme => ({
     root: {
-      width: 300,
+      maxWidth: 325,
+      width: '100%',
     },
-    margin: {
-      height: theme.spacing(3),
+
+    title: {
+      fontWeight: 'bold',
+      fontSize: 18,
+      lineHeight: '128%',
+      marginLeft: -7,
+      marginBottom: 10,
+      color: '#353535',
+      marginTop: '30',
     },
+
   }));
 
   const marks = [
@@ -46,11 +55,13 @@ const useStyles = makeStyles(theme => ({
         value: 8,
         label: '8',
     },
+    {
+      value: 9,
+      label: '9',
+   },
   ];
 
-  function valuetext(value) {
-    return `${value}`;
-  }
+
 
   export default function DiscreteSlider() {
     const classes = useStyles();
@@ -58,18 +69,16 @@ const useStyles = makeStyles(theme => ({
     return (
       <div className={classes.root}>
       
-        <div className={classes.margin} />
-        <Typography id="discrete-slider-custom" gutterBottom>
-           Количество людей
+        <Typography className={classes.title} id="discrete-slider-custom">
+           Кол-во человек
         </Typography>
         <Slider
           defaultValue={1}
-          getAriaValueText={valuetext}
           aria-labelledby="discrete-slider-custom"
           step={1}
-          valueLabelDisplay="auto"
+          valueLabelDisplay="off"
           marks={marks}
-          max={8} 
+          max={9} 
           min={1} 
         />
        </div>

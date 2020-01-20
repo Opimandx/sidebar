@@ -5,6 +5,10 @@ import PriceSlider from './components/PriceSlider'
 import IncludedServices from './components/IncludedServices'
 import AutoTags from './components/AutoTags'
 import CarcassChoice from './components/CarcassChoice/CarcassChoice'
+import Complectation from './components/Complectation'
+import Companies from './components/Companies'
+
+
 
 const price = {
   min: 50,
@@ -17,11 +21,13 @@ function App() {
     <div className="sidebar">
       <PeopleSlider/>
       <PriceSlider 
-      price = {price}
+        price = {price}
       />
       <IncludedServices/>
       <AutoTags/>
       <CarcassChoice/>
+      <Complectation/> 
+      <Companies/>
     </div>
   );
 }
