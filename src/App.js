@@ -16,18 +16,39 @@ const price = {
 }
 
 function App() {
+  const [valuePeople, setValuePeople] = React.useState(1);
+  const [valuePrice, setValuePrice] = React.useState([price.min, price.max]);
+  const [valueTags, setValueTags] = React.useState({});
+  const [includedServices, setIncludedServices] = React.useState([]);
+  const [autoTags, setAutoTags] = React.useState([]);
+  const [complectation, setComplectation] = React.useState({});
+  const [companies, setCompanies] = React.useState({});
+
   return (
 
     <div className="sidebar">
-      <PeopleSlider/>
-      <PriceSlider 
-        price = {price}
+      <PeopleSlider 
+        setValuePeople={setValuePeople}
       />
-      <IncludedServices/>
-      <AutoTags/>
-      <CarcassChoice/>
-      <Complectation/> 
-      <Companies/>
+      <PriceSlider 
+        price={price}
+        setValuePrice={setValuePrice}
+      />
+      <IncludedServices
+        setIncludedServices={setIncludedServices}
+      />
+      <AutoTags
+        setAutoTags={setAutoTags}
+      />
+      <CarcassChoice  
+        setValueTags={setValueTags}
+      />
+      <Complectation 
+        setComplectation={setComplectation}
+      /> 
+      <Companies 
+        setCompanies={setCompanies}
+      />
     </div>
   );
 }

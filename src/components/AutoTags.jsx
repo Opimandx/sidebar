@@ -12,7 +12,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    padding: theme.spacing(0.5),
   },
   chip: {
     marginRight: theme.spacing(1),
@@ -26,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function ChipsArray() {
+export default function ChipsArray(props) {
   const classes = useStyles();
   const [chipData, setChipData] = React.useState([
     { key: 0, label: 'Opel' },
@@ -39,6 +38,7 @@ export default function ChipsArray() {
     setChipData(chips => chips.filter(chip => chip.key !== chipToDelete.key));
   };
 
+  props.setAutoTags(chipData)
   return (
     <ThemeProvider theme={customTheme}>
         <Grid container 

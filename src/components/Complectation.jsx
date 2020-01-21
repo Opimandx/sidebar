@@ -36,11 +36,20 @@ const useStyles = makeStyles(theme => ({
 
   listButton: {
     paddingLeft: 0, 
+    paddingRight: 0,
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+  },
+  label: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    lineHeight: '128%',
   }
  
 }));
 
-export default function Complectation() {
+export default function Complectation(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [state, setState] = React.useState({
@@ -60,6 +69,8 @@ const handleChange = name => event => {
   const handleClick = () => {
     setOpen(!open);
   };
+
+  props.setComplectation(state)
 
   return (
     <List

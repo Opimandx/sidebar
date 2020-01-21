@@ -17,7 +17,6 @@ const useStyles = makeStyles(theme => ({
       marginLeft: -7,
       marginBottom: 10,
       color: '#353535',
-      marginTop: '30',
     },
 
   }));
@@ -63,9 +62,13 @@ const useStyles = makeStyles(theme => ({
 
 
 
-  export default function DiscreteSlider() {
+  export default function DiscreteSlider(props) {
     const classes = useStyles();
-  
+    
+    const handleChange = (event, value) => {
+      props.setValuePeople(value)
+    }
+    
     return (
       <div className={classes.root}>
       
@@ -80,6 +83,7 @@ const useStyles = makeStyles(theme => ({
           marks={marks}
           max={9} 
           min={1} 
+          onChange={handleChange}
         />
        </div>
     );

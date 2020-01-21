@@ -12,14 +12,15 @@ const useStyles = makeStyles({
 
 
 
-export default function CarcassChoice() {
+export default function CarcassChoice(props) {
 
 
   
     return (
         <Grid className={useStyles.root}>
             <CustomCheckbox 
-              image = {sedan}
+              image={sedan}
+              setValueTags={props.setValueTags}
             />
         </Grid>
       );

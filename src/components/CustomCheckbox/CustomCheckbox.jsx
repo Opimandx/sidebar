@@ -26,7 +26,7 @@ const CustomCheckboxPremium = withStyles({
       }
   }));
 
-export default function CustomCheckbox() {
+export default function CustomCheckbox(props) {
     const classes = useStyles();
     const [state, setState] = React.useState({
         minivan: false,
@@ -38,12 +38,14 @@ export default function CustomCheckbox() {
 
     });
 
+
     const [isPremium, setPremium] = React.useState(false);
 
     const handleChange = name => event => {
         setState({ ...state, [name]: event.target.checked });
     };
 
+    props.setValueTags(state)
 
     return (
         <>

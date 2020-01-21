@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -20,9 +20,32 @@ const useStyles = makeStyles(theme => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
+  listButton: {
+    paddingLeft: 0, 
+    paddingRight: 0,
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+  },
+  divider: {
+    marginTop: 32,
+    backgroundColor: '#D1DDE5',
+  },
 }));
 
-export default function Complectation() {
+
+const CustomCheckboxPremium = withStyles({
+ 
+  root: {
+    color: '#D1DDE5',
+    '&$checked': {
+      color: '#1A94E5',
+    },
+  },
+  checked: {},
+})(props => <Checkbox color="default" {...props} />);
+
+export default function Complectation(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -41,6 +64,8 @@ const handleChange = name => event => {
     setOpen(!open);
   };
 
+  props.setCompanies(state)
+  
   return (
     <List
       component="nav"
@@ -48,8 +73,8 @@ const handleChange = name => event => {
       className={classes.root}
     >
       
-      <ListItem button onClick={handleClick}>
-        <ListItemText primary="Прокатные компании" />
+      <ListItem className={classes.listButton} button onClick={handleClick}>
+        <ListItemText  primary="Прокатные компании" />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
@@ -61,7 +86,7 @@ const handleChange = name => event => {
            >
             <FormControlLabel
                 control={
-                    <Checkbox
+                    <CustomCheckboxPremium
                         checked={state.company1}
                         onChange={handleChange('company1')}
                         value="company1"
@@ -73,7 +98,7 @@ const handleChange = name => event => {
 
             <FormControlLabel
                 control={
-                    <Checkbox
+                    <CustomCheckboxPremium
                         checked={state.company2}
                         onChange={handleChange('company2')}
                         value="company2"
@@ -85,7 +110,7 @@ const handleChange = name => event => {
 
             <FormControlLabel
                 control={
-                    <Checkbox
+                    <CustomCheckboxPremium
                         checked={state.company3}
                         onChange={handleChange('company3')}
                         value="company3"
@@ -97,7 +122,7 @@ const handleChange = name => event => {
 
           <FormControlLabel
                 control={
-                    <Checkbox
+                    <CustomCheckboxPremium
                         checked={state.company4}
                         onChange={handleChange('company4')}
                         value="petrol"

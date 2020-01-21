@@ -110,6 +110,7 @@ const customTheme = createMuiTheme({
         lineHeight: '143%',
       }
     },
+    
   },
 });
 

@@ -45,8 +45,10 @@ const useStyles = makeStyles({
 
 
 export default function RangeSlider(props) {
+  const { min, max } = props.price;
+  
   const classes = useStyles();
-  const [value, setValue] = React.useState([50, 12000]);
+  const [value, setValue] = React.useState([min, max]);
   
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
@@ -58,13 +60,14 @@ export default function RangeSlider(props) {
 
 
   const handleBlur = () => {
-    if (value < 50) {
-      setValue(50);
-    } else if (value > 12000) {
-      setValue(12000);
+    if (value < min) {
+      setValue(min);
+    } else if (value > max) {
+      setValue(max);
     }
   };
   
+  props.setValuePrice(value)
 
   
   return (
@@ -78,8 +81,8 @@ export default function RangeSlider(props) {
         value={value}
         onChange={handleSliderChange}
         aria-labelledby="input-slider"
-        min={50}
-        max={12000}       
+        min={min}
+        max={max}       
         />
         <Grid 
         container 
@@ -93,8 +96,8 @@ export default function RangeSlider(props) {
             onBlur={handleBlur}
             inputProps={{
               step: 10,
-              min: 50,
-              max: 12000,
+              min: min,
+              max: max,
               type: 'number',
               'aria-labelledby': 'input-slider',
             }}
@@ -109,8 +112,8 @@ export default function RangeSlider(props) {
             onBlur={handleBlur}
             inputProps={{
               step: 10,
-              min: 50,
-              max: 1200,
+              min: min,
+              max: max,
               type: 'number',
               'aria-labelledby': 'input-slider',
             }}

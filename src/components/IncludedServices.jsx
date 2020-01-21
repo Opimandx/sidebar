@@ -41,8 +41,8 @@ const CustomCheckbox = withStyles({
     checked: {},
   })(props => <Checkbox color="default" {...props} />);
 
-export default function IncludedServices() {
-  
+export default function IncludedServices(props) {
+    
     const classes = useStyles();
 
     const [state, setState] = React.useState({
@@ -56,8 +56,8 @@ export default function IncludedServices() {
     const handleChange = name => event => {
         setState({ ...state, [name]: event.target.checked });
     };
-
-
+     
+    props.setIncludedServices(state)
     return (
         <ThemeProvider theme = {customTheme}>
 
